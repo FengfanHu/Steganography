@@ -16,15 +16,9 @@ def read_file(path):
     msg = fp.read() #return byte-array
     bit_stream = ""
     for i in range(len(msg)):
-        temp = bin(msg[i]).zfill(8)
-        bit_stream += temp.replace("0b",'')
+        bit_stream += dec2bit(msg[i])
     fp.close()
     return bit_stream
-
-#Fill the bit-stream
-def fill_stream(bit_stream, sub_length):
-    for _ in range(sub_length):
-        bit_stream += random.sample('01',1)[0]
 
 #LSB process
 #The value of the least significant bit plane can be simply get by complementing 2
@@ -55,12 +49,13 @@ if __name__ == "__main__":
     if sub_length < 0:
         print("There is a data overflow, your action has been forbiddened.")
         exit()
-    
-    #Fill the bit-stream, in order to match the length
-    fill_stream(bit_stream, sub_length)
+
+    #Fill the bit-stream to match the length of size of image
+    for _ in range(sub_length):
+        bit_stream += random.sample('01',1)[0]
+
     #LSB process
     lsb_process(img, bit_stream)
     
     cv2.imwrite("../src/embedded.bmp", img)
     print("Message embedded successfully.")
-

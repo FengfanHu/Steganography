@@ -21,5 +21,15 @@ def extract_lsb(img, length):
 
     return bit_stream
 
-# if __name__ == "__main__":
-#     img = cv2.imread("../embedded.bmp", cv2.IMREAD_COLOR)
+#Transform bit-stream to str format
+def bit_stream2str(bit_stream):
+    bits_array = []
+    msg = ""
+    count = int(len(bit_stream)/8)
+    for i in range(count):
+        bits_array.append(int(bit_stream[0+8*i:8+8*i], 2))
+    
+    for i in range(len(bits_array)):
+        msg += chr(bits_array[i])
+    
+    return msg

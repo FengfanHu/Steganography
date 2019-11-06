@@ -10,6 +10,8 @@ print(obit_stream)
 ebit_stream = ste_extract.extract_lsb(img2, len(obit_stream))
 print("========分隔符========")
 print(ebit_stream)
+msg = ste_extract.bit_stream2str(ebit_stream)
+print(msg)
 
 # for i in range(16):
 #     img1_value = img1.item(0,i)
