@@ -38,9 +38,9 @@ def lsb_process(img, bit_stream):
 
 if __name__ == "__main__":
     #Use grey-scale to read image
-    img = cv2.imread("../src/original.bmp", cv2.IMREAD_GRAYSCALE)
+    img = cv2.imread("../src/lsb/original.bmp", cv2.IMREAD_GRAYSCALE)
     #Transform file data to bit-stream
-    bit_stream = read_file("../src/data.txt")
+    bit_stream = read_file("../src/lsb/data.txt")
     #Image size which equals to rows * columns
     img_size = img.size
     #Sub-length is used to fill the bit-stream
@@ -50,12 +50,12 @@ if __name__ == "__main__":
         print("There is a data overflow, your action has been forbiddened.")
         exit()
 
-    #Fill the bit-stream to match the length of size of image
+    #Fill the bit-stream to match the length of the size of image
     for _ in range(sub_length):
         bit_stream += random.sample('01',1)[0]
 
     #LSB process
     lsb_process(img, bit_stream)
     
-    cv2.imwrite("../src/embedded.bmp", img)
+    cv2.imwrite("../src/lsb/embedded.bmp", img)
     print("Message embedded successfully.")
