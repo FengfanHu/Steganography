@@ -55,6 +55,31 @@ if k == 27:
 Least significant bit plane
 
 ### Usage
+ - Embed
+ 
+Dec to bit
+```python3
+def dec2bit(grey_value) str
+```
+Read file
+```python3
+def read_file(path) bit_stream
+```
+LSB process
+```python3
+def lsb_process(img, bit_stream)
+```
+
+ - Extract
+ 
+Extract values from the least significant bit plane
+```python3
+def extract_lsb(img, length) bit_stream
+```
+Transform bit-stream to str format
+```python3
+def bit_stream2str(bit_stream) str
+```
 
 ***
 
@@ -62,33 +87,35 @@ Least significant bit plane
 Discrete Cosine Transform
 
 ### Usage
-#### Embed
+ - Embed
+ 
 Resize the image to a format of 8N*8N
 ```python3
-img_resize(img) img
+def img_resize(img) img
 ```
 Split the image-array to a list of block(8*8)
 ```python3
-img_split(img) (blocks, column_count, row_count)
+def img_split(img) (blocks, column_count, row_count)
 ```
 Have each block DCT
 ```python3
-blocks_dct(blocks) dct_blocks
+def blocks_dct(blocks) dct_blocks
 ```
 Embed the water print to original image
 ```python3
-embed_img(dct_blocks, water_print) dct_blocks
+def embed_img(dct_blocks, water_print) dct_blocks
 ```
 Have each block IDCT
 ```python3
-blocks_idct(dct_blocks) idct_blocks
+def blocks_idct(dct_blocks) idct_blocks
 ```
 Merge the blocks to image-array
 ```python3
-blocks2img(blocks, row_count, column_count) img
+def blocks2img(blocks, row_count, column_count) img
 ```
-#### Extract
+ - Extract
+ 
 Extract the water print to original image
 ```python3
-extract_img(e_img, o_img, wp_row, wp_column) img
+def extract_img(e_img, o_img, wp_row, wp_column) img
 ```
