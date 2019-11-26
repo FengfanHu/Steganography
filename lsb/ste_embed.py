@@ -20,6 +20,21 @@ def read_file(path):
     fp.close()
     return bit_stream
 
+#Water-print to bit_stream
+def read_img(img):
+    rows = img.shape[0]
+    columns = img.shape[1]
+    values = []
+    bit_stream = ''
+    for row in range(rows):
+        for column in range(columns):
+            value = img.item(row, column)
+            values.append(value)
+    for value in values:
+        temp = dec2bit(value)
+        bit_stream += temp
+    return bit_stream
+
 #LSB process
 #The value of the least significant bit plane can be simply get by complementing 2
 def lsb_process(img, bit_stream):
@@ -39,8 +54,13 @@ def lsb_process(img, bit_stream):
 if __name__ == "__main__":
     #Use grey-scale to read image
     img = cv2.imread("../src/lsb/original.bmp", cv2.IMREAD_GRAYSCALE)
+
     #Transform file data to bit-stream
-    bit_stream = read_file("../src/lsb/data.txt")
+    # bit_stream = read_file("../src/lsb/data.txt")
+    #Transform watermark to bit-stream
+    watermark = cv2.imread('../src/lsb/watermark.bmp', cv2.IMREAD_GRAYSCALE)
+    bit_stream = read_img(watermark)
+
     #Image size which equals to rows * columns
     img_size = img.size
     #Sub-length is used to fill the bit-stream
