@@ -80,7 +80,20 @@ Transform bit-stream to str format
 ```python3
 def bit_stream2str(bit_stream) str
 ```
+Transform bit-stream to img
+```python3
+def bit_stream2img(bit_stream, rows, column) img
+```
 
+ - Visible Attack
+灰度图可视攻击
+```python3
+def lsb(img, depth) img
+```
+RGB可视攻击
+```python3
+def lsb_rgb(img, c_type, depth) img
+```
 ***
 
 ## DCT

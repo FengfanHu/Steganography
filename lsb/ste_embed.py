@@ -3,6 +3,13 @@
 from cv2 import cv2
 import random
 
+#Resize the image to a format like 4N*4N
+def img_resize(img):
+    img_rows = img.shape[0] // 4 * 4
+    img_columns = img.shape[1] // 4 * 4
+    img = cv2.resize(img, (img_columns, img_rows))
+    return img
+
 #Dec to bit
 #Since values are less than 255, so we use 8 bits.
 def dec2bit(grey_value):
