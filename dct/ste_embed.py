@@ -80,7 +80,7 @@ def blocks2img(blocks, row_count, column_count):
 
 if __name__ == "__main__":
     #Read image by grayscale way.
-    img = cv2.imread("../src/dct/original.bmp", cv2.IMREAD_GRAYSCALE)
+    img = cv2.imread("../src/dct/original_img.bmp", cv2.IMREAD_GRAYSCALE)
     water_print = cv2.imread("../src/dct/waterprint.jpg", cv2.IMREAD_GRAYSCALE)
     #Resize the image to a format like 8N*8N
     new_img = img_resize(img)   # 228*150 = 34200

@@ -4,7 +4,7 @@ import numpy as np
 import ste_embed as embed
 
 #Main feature
-#Embed the water print to original image
+#Extract the water print to original image
 def extract_img(e_img, o_img, wp_row, wp_column):
     #Resize the origianl image to make the size match the format of 8N*8N
     o_img = embed.img_resize(o_img)
@@ -29,14 +29,14 @@ def extract_img(e_img, o_img, wp_row, wp_column):
 
 if __name__ == "__main__":
     e_img = cv2.imread("../src/dct/embeded.bmp", cv2.IMREAD_GRAYSCALE)
-    o_img = cv2.imread("../src/dct/original.bmp", cv2.IMREAD_GRAYSCALE)
+    o_img = cv2.imread("../src/dct/original_img.bmp", cv2.IMREAD_GRAYSCALE)
     water_print = cv2.imread("../src/dct/waterprint.jpg", cv2.IMREAD_GRAYSCALE)
     
     wp_row = water_print.shape[0]
     wp_column = water_print.shape[1]
 
     wp_img = extract_img(e_img, o_img, wp_row, wp_column)
-    
+
     cv2.imwrite("../src/dct/extracted_img.png", wp_img)
     cv2.imshow('wp_img', wp_img)
     k = cv2.waitKey(0)

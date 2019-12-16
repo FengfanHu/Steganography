@@ -2,6 +2,7 @@
 from cv2 import cv2
 import ste_embed
 
+#From gray image extract binary water mark.
 def lsb(img, depth):
   rows = img.shape[0]
   columns = img.shape[1]
@@ -15,6 +16,7 @@ def lsb(img, depth):
       img.itemset((row,column), temp)
   return img
 
+#From RGB image extract binary water mark.
 def lsb_rgb(img, c_type, depth):
   rows = img.shape[0]
   columns = img.shape[1]
@@ -29,7 +31,7 @@ def lsb_rgb(img, c_type, depth):
   return img
 
 if __name__ == "__main__":
-  original_img = cv2.imread('../src/test/3-2.bmp', cv2.IMREAD_COLOR)
+  original_img = cv2.imread('../src/test/50-2.bmp', cv2.IMREAD_COLOR)
   img_r = original_img[:,:,0]
   img_g = original_img[:,:,1]
   img_b = original_img[:,:,2]

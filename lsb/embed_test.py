@@ -5,23 +5,21 @@ import ste_extract
 # img1 = cv2.imread("../src/lsb/original.bmp", cv2.IMREAD_GRAYSCALE)
 img2 = cv2.imread("../src/lsb/embedded.bmp", cv2.IMREAD_GRAYSCALE)
 
-
-#Resize img
-# img = ste_embed.img_resize(img1)
-# cv2.imwrite('../src/lsb/original.bmp', img)
-
-#Extract words
-# obit_stream = ste_embed.read_file("../src/lsb/data.txt")
-# print(obit_stream)
-# ebit_stream = ste_extract.extract_lsb(img2, len(obit_stream))
-# print("========分隔符========")
-# print(ebit_stream)
-# msg = ste_extract.bit_stream2str(ebit_stream)
-# print(msg)
-
 #Extract watermark.
-ebit_stream = ste_extract.extract_lsb(img2, 64800)
-img = ste_extract.bit_stream2img(ebit_stream, 90, 90)
+ebit_stream = ste_extract.extract_lsb(img2, 65536)
+
+ebit_stream = ste_extract.random_recover(ebit_stream)
+
+ebit_stream = ste_extract.bit_streamRecovering(ebit_stream, 1)
+
+'''
+Extract gray-type water mark.
+'''
+# img = ste_extract.bit_stream2gray_img(ebit_stream, 90, 90)
+'''
+Extract binary-type water mark.
+'''
+img = ste_extract.bit_stream2binary_img(ebit_stream, 256, 256)
 cv2.imshow('watermark', img)
 k = cv2.waitKey(0)
 if k == 27:
